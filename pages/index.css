@@ -4,3 +4,8 @@
 /* Подключение шрифтов */
 @import url(../fonts/fonts.css);
 
+/* Стили блока page */
+@import url(../blocks/page/page.css);
+
+/* Стили блока header */
+@import url(../blocks/header/header.css);
