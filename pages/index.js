@@ -27,7 +27,7 @@ function popupHidden() {
   popup.classList.add("popup_hidden");
 }
 
-/* функция отпраавки формы */
+/* функция отправки формы */
 function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = formItemName.value;
