@@ -17,104 +17,106 @@
         <div class="profile__info">
           <div class="profile__content">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <button class="profile__edit-button" type="button"></button>
           </div>
           <p class="profile__bio">Исследователь океана</p>
         </div>
-        <button class="profile__add-button"></button>
+        <button class="profile__add-button" type="button"></button>
       </section>
-      <section class="photo-grid" aria-label="Места">
+      <article class="photo-grid" aria-label="Места">
         <div class="card">
           <img
-            src="./images/place-grid/karachaevsk.png"
+            src="./images/place-grid/karachaevsk.jpg"
             alt="Карачаевск"
             class="card__image"
           />
           <div class="card__content">
             <h3 class="card__title">Карачаевск</h3>
-            <button class="card__like card__like_active"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </div>
 
         <div class="card">
           <img
-            src="./images/place-grid/elbrus.png"
+            src="./images/place-grid/elbrus.jpg"
             alt="Эльбрус"
             class="card__image"
           />
           <div class="card__content">
             <h3 class="card__title">Гора Эльбрус</h3>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </div>
 
         <div class="card">
           <img
-            src="./images/place-grid/dombay.png"
+            src="./images/place-grid/dombay.jpg"
             alt="Домбай"
             class="card__image"
           />
           <div class="card__content">
             <h3 class="card__title">Домбай</h3>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </div>
 
         <div class="card">
           <img
-            src="./images/place-grid/elbrus.png"
+            src="./images/place-grid/elbrus.jpg"
             alt="Эльбрус"
             class="card__image"
           />
           <div class="card__content">
             <h3 class="card__title">Гора Эльбрус</h3>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </div>
 
         <div class="card">
           <img
-            src="./images/place-grid/dombay.png"
+            src="./images/place-grid/dombay.jpg"
             alt="Домбай"
             class="card__image"
           />
           <div class="card__content">
             <h3 class="card__title">Домбай</h3>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </div>
 
         <div class="card">
           <img
-            src="./images/place-grid/karachaevsk.png"
+            src="./images/place-grid/karachaevsk.jpg"
             alt="Карачаевск"
             class="card__image"
           />
           <div class="card__content">
             <h3 class="card__title">Карачаево-Черкесия</h3>
-            <button class="card__like"></button>
+            <button class="card__like" type="button"></button>
           </div>
         </div>
-      </section>
+      </article>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
     </footer>
-    <div class="popup popup_opened">
+    <div class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="popup__form">
+        <form class="popup__form" name="popup-form">
           <input
             type="text"
-            class="popup__form-item popup__form-item_value_name"            
+            name="name"
+            class="popup__form-item popup__form-item_value_name"
           />
           <input
             type="text"
-            class="popup__form-item popup__form-item_value_bio"            
+            name="bio"
+            class="popup__form-item popup__form-item_value_bio"
           />
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
-        <button class="popup__close-button"></button>
+        <button class="popup__close-button" type="button"></button>
       </div>
     </div>
     <script src="./pages/index.js"></script>
