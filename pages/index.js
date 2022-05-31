@@ -17,14 +17,14 @@ let formItemBio = popup.querySelector(".popup__form-item_value_bio");
 
 /* создаем функцию для открытия popup'a */
 function popupUnHidden() {
-  popup.classList.remove("popup_hidden");
+  popup.classList.remove("popup_opened");
   formItemName.value = profileName.textContent;
   formItemBio.value = profileBio.textContent;
 }
 
 /* создаем функцию для скрытия  popup'a */
 function popupHidden() {
-  popup.classList.add("popup_hidden");
+  popup.classList.add("popup_opened");
 }
 
 /* функция отправки формы */
