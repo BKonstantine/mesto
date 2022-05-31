@@ -6,6 +6,7 @@
   position: absolute;
   right: -40px;
   top: -40px;
+  outline: none;
   background-color: transparent;
   background-image: url(../../../images/buttons/close-button.svg);
   background-position: center;
