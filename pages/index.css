@@ -32,9 +32,6 @@
 /* стили блока card */
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__image/card__image.css);
-@import url(../blocks/card/__image/_palce/card__image_palce_dombay.css);
-@import url(../blocks/card/__image/_palce/card__image_palce_elbrus.css);
-@import url(../blocks/card/__image/_palce/card__image_palce_karachevsk.css);
 @import url(../blocks/card/__content/card__content.css);
 @import url(../blocks/card/__title/card__title.css);
 @import url(../blocks/card/__like/card__like.css);
