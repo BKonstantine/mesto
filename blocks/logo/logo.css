@@ -2,7 +2,15 @@
   width: 142px;
   height: 33px;
   background-image: url(../../images/logo/logo.svg);
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 879px) {
+  .logo {
+    margin-left: 19px;
+    width: 104px;
+    height: 25px;
+  }
 }
