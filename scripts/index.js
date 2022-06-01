@@ -14,17 +14,27 @@ const profileBio = profile.querySelector(".profile__bio");
 const formItemName = popup.querySelector(".popup__form-item_value_name");
 const formItemBio = popup.querySelector(".popup__form-item_value_bio");
 
+function togglePopup() {
+  if (popup.classList.contains("popup_opened") === false) {
+    popup.classList.toggle("popup_opened");
+    formItemName.value = profileName.textContent;
+    formItemBio.value = profileBio.textContent;
+  } else {
+    popup.classList.toggle("popup_opened");
+  }
+}
+
 /* создаем функцию для открытия popup'a */
-function openPopup() {
+/* function openPopup() {
   popup.classList.add("popup_opened");
   formItemName.value = profileName.textContent;
   formItemBio.value = profileBio.textContent;
-}
+} */
 
 /* создаем функцию для скрытия  popup'a */
-function closePopup() {
+/* function closePopup() {
   popup.classList.remove("popup_opened");
-}
+} */
 
 /* функция отправки формы */
 function formSubmitHandler(evt) {
@@ -32,10 +42,11 @@ function formSubmitHandler(evt) {
   profileName.textContent = formItemName.value;
   profileBio.textContent = formItemBio.value;
 
-  closePopup();
+  /* closePopup(); */
+  togglePopup();
 }
 
 /* добавляем обработчики событий */
-editButton.addEventListener("click", openPopup);
-closeButton.addEventListener("click", closePopup);
+editButton.addEventListener("click", togglePopup);
+closeButton.addEventListener("click", togglePopup);
 popup.addEventListener("submit", formSubmitHandler);
