@@ -48,9 +48,6 @@ const photoGrid = document.querySelector(".photo-grid");
 /* получаем доступ к шаблону карточек */
 const cardTemplate = document.querySelector(".card-template").content;
 
-/* получаем доступ к кнопке delete */
-const deleteButton = cardTemplate.querySelector(".card__trash");
-
 /* функция открытия и закрытия попапа */
 function togglePopup() {
   if (popup.classList.contains("popup_opened") === false) {
@@ -72,6 +69,11 @@ function renderItem(item) {
     ".card__image"
   ).style.backgroundImage = `url(${item.link})`;
 
+  /* добавляем обработчики событий */
+  cardItem
+    .querySelector(".card__trash")
+    .addEventListener("click", () => deleteItem(cardItem));
+
   /* вставляем карточку на страницу */
   photoGrid.append(cardItem);
 }
@@ -83,6 +85,11 @@ function formSubmitHandler(evt) {
   profileBio.textContent = formItemBio.value;
 
   togglePopup();
+}
+
+/* функция удаления карточки */
+function deleteItem(item) {
+  item.remove();
 }
 
 /* вставить стартовый нобор карточек */
