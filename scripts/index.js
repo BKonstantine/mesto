@@ -1,5 +1,4 @@
 /* стартовый набор для блока card */
-debugger;
 const initialCards = [
   {
     name: "Архыз",
@@ -31,7 +30,7 @@ const initialCards = [
 const profile = document.querySelector(".profile");
 const popup = document.querySelector(".popup");
 
-/* получаем доступ к кнопкам edit, save и close */
+/* получаем доступ к кнопкам edit и close*/
 const editButton = profile.querySelector(".profile__edit-button");
 const closeButton = popup.querySelector(".popup__close-button");
 
@@ -49,6 +48,9 @@ const photoGrid = document.querySelector(".photo-grid");
 /* получаем доступ к шаблону карточек */
 const cardTemplate = document.querySelector(".card-template").content;
 
+/* получаем доступ к кнопке delete */
+const deleteButton = cardTemplate.querySelector(".card__trash");
+
 /* функция открытия и закрытия попапа */
 function togglePopup() {
   if (popup.classList.contains("popup_opened") === false) {
@@ -60,16 +62,18 @@ function togglePopup() {
   }
 }
 
-function initialPhotoGrid() {
-  initialCards.forEach(function (item) {
-    /* клонируем содержимое шаблона */
-    const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
-    cardItem.querySelector(".card__title").textContent = item.name;
-    cardItem.querySelector(
-      ".card__image"
-    ).style.backgroundImage = `url(${item.link})`;
-    photoGrid.append(cardItem);
-  });
+function renderItem(item) {
+  /* клонируем содержимое шаблона */
+  const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
+
+  /* наполняем содержимым */
+  cardItem.querySelector(".card__title").textContent = item.name;
+  cardItem.querySelector(
+    ".card__image"
+  ).style.backgroundImage = `url(${item.link})`;
+
+  /* вставляем карточку на страницу */
+  photoGrid.append(cardItem);
 }
 
 /* функция отправки формы */
@@ -81,9 +85,18 @@ function formSubmitHandler(evt) {
   togglePopup();
 }
 
-initialPhotoGrid();
+/* функция удаления карточки */
+/* function deleteCard() {
+  const deleteItem = deleteButton.closest(".card");
+  deleteItem.remove();
+  debugger;
+} */
+
+/* вставить стартовый нобор карточек */
+initialCards.forEach(renderItem);
 
 /* добавляем обработчики событий */
 editButton.addEventListener("click", togglePopup);
 closeButton.addEventListener("click", togglePopup);
 popup.addEventListener("submit", formSubmitHandler);
+/* deleteButton.addEventListener("click", deleteCard); */
