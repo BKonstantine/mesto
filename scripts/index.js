@@ -1,4 +1,5 @@
 /* стартовый набор для блока card */
+debugger;
 const initialCards = [
   {
     name: "Архыз",
@@ -48,9 +49,7 @@ const photoGrid = document.querySelector(".photo-grid");
 /* получаем доступ к шаблону карточек */
 const cardTemplate = document.querySelector(".card-template").content;
 
-/* клонируем содержимое шаблона */
-const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
-
+/* функция открытия и закрытия попапа */
 function togglePopup() {
   if (popup.classList.contains("popup_opened") === false) {
     popup.classList.toggle("popup_opened");
@@ -61,6 +60,18 @@ function togglePopup() {
   }
 }
 
+function initialPhotoGrid() {
+  initialCards.forEach(function (item) {
+    /* клонируем содержимое шаблона */
+    const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
+    cardItem.querySelector(".card__title").textContent = item.name;
+    cardItem.querySelector(
+      ".card__image"
+    ).style.backgroundImage = `url(${item.link})`;
+    photoGrid.append(cardItem);
+  });
+}
+
 /* функция отправки формы */
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -69,6 +80,8 @@ function formSubmitHandler(evt) {
 
   togglePopup();
 }
+
+initialPhotoGrid();
 
 /* добавляем обработчики событий */
 editButton.addEventListener("click", togglePopup);
