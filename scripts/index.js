@@ -74,6 +74,10 @@ function renderItem(item) {
     .querySelector(".card__trash")
     .addEventListener("click", () => deleteItem(cardItem));
 
+  cardItem
+    .querySelector(".card__like")
+    .addEventListener("click", (e) => e.target.classList.toggle("card__like_active"));
+
   /* вставляем карточку на страницу */
   photoGrid.append(cardItem);
 }
