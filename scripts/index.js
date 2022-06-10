@@ -67,7 +67,7 @@ function renderItem(item) {
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
 
   /* наполняем содержимым */
-  cardItem.querySelector(".card__title").textContent = item.name;
+  cardItem.querySelector(".card__title").innerText = item.name; //попробовать заменить на textContent и отправить скрипт
   cardItem.querySelector(
     ".card__image"
   ).style.backgroundImage = `url(${item.link})`;
@@ -85,13 +85,6 @@ function formSubmitHandler(evt) {
   togglePopup();
 }
 
-/* функция удаления карточки */
-/* function deleteCard() {
-  const deleteItem = deleteButton.closest(".card");
-  deleteItem.remove();
-  debugger;
-} */
-
 /* вставить стартовый нобор карточек */
 initialCards.forEach(renderItem);
 
@@ -99,4 +92,3 @@ initialCards.forEach(renderItem);
 editButton.addEventListener("click", togglePopup);
 closeButton.addEventListener("click", togglePopup);
 popup.addEventListener("submit", formSubmitHandler);
-/* deleteButton.addEventListener("click", deleteCard); */
