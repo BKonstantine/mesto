@@ -1,14 +1,17 @@
-.card__like {
+.card__trash {
   margin: 0;
   padding: 0;
   border: none;
-  width: 22px;
+  width: 18px;
   height: 19px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
   box-sizing: border-box;
   flex: none;
   outline: none;
   background-color: transparent;
-  background-image: url(../../../images/buttons/like.svg);
+  background-image: url(../../../images/buttons/trash.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -16,6 +19,6 @@
   transition: 0.5s;
 }
 
-.card__like:hover {
-  opacity: 0.5;
+.card__trash:hover {
+  opacity: 0.6;
 }
