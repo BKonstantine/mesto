@@ -39,6 +39,7 @@ const profileName = profile.querySelector(".profile__name");
 const profileBio = profile.querySelector(".profile__bio");
 
 /* получаем доступ к полям ввода */
+const popupForm = popup.querySelector(".popup__form");
 const formItemName = popup.querySelector(".popup__form-item_value_name");
 const formItemBio = popup.querySelector(".popup__form-item_value_bio");
 
@@ -76,7 +77,9 @@ function renderItem(item) {
 
   cardItem
     .querySelector(".card__like")
-    .addEventListener("click", (e) => e.target.classList.toggle("card__like_active"));
+    .addEventListener("click", (e) =>
+      e.target.classList.toggle("card__like_active")
+    );
 
   /* вставляем карточку на страницу */
   photoGrid.append(cardItem);
@@ -102,4 +105,4 @@ initialCards.forEach(renderItem);
 /* добавляем обработчики событий */
 editButton.addEventListener("click", togglePopup);
 closeButton.addEventListener("click", togglePopup);
-popup.addEventListener("submit", formSubmitHandler);
+popupForm.addEventListener("submit", formSubmitHandler);
