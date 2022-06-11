@@ -44,7 +44,11 @@
           />
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
-        <button id="popup__close-button-bio" class="popup__close-button" type="button"></button>
+        <button
+          id="popup__close-button-bio"
+          class="popup__close-button"
+          type="button"
+        ></button>
       </div>
     </div>
     <div id="popup-place" class="popup">
@@ -65,7 +69,26 @@
           />
           <button class="popup__make-button" type="submit">Создать</button>
         </form>
-        <button id="popup__close-button-place" class="popup__close-button" type="button"></button>
+        <button
+          id="popup__close-button-place"
+          class="popup__close-button"
+          type="button"
+        ></button>
+      </div>
+    </div>
+    <div id="popup-image" class="popup popup__image">      
+      <div class="popup__container-image">
+        <img
+          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg"
+          alt=""
+          class="popup__image-place"
+        />
+        <p class="popup__image-title">Архыз</p>
+        <button
+          id="popup__close-button-image"
+          class="popup__close-button"
+          type="button"
+        ></button>
       </div>
     </div>
     <template class="card-template">
@@ -74,7 +97,7 @@
         <div class="card__image" style="background-image: url('')"></div>
         <div class="card__content">
           <h3 class="card__title"></h3>
-          <button class="card__like" type="button"></button>          
+          <button class="card__like" type="button"></button>
         </div>
       </article>
     </template>
