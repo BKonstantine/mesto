@@ -30,8 +30,9 @@ const initialCards = [
 const profile = document.querySelector(".profile");
 const popup = document.querySelector(".popup");
 
-/* получаем доступ к кнопкам edit и close*/
+/* получаем доступ к кнопкам edit, close , add*/
 const editButton = profile.querySelector(".profile__edit-button");
+const addButton = profile.querySelector('.profile__add-button');
 const closeButton = popup.querySelector(".popup__close-button");
 
 /* получаем доступ к name и bio пользователя */
