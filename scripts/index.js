@@ -30,6 +30,7 @@ const initialCards = [
 const profile = document.querySelector(".profile");
 const popupBio = document.querySelector("#popup-bio");
 const popupPlace = document.querySelector("#popup-place");
+const popupImage = document.querySelector("popup-image");
 
 /* получаем доступ к кнопкам edit, close , add*/
 const editButton = profile.querySelector(".profile__edit-button");
