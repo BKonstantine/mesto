@@ -28,21 +28,26 @@ const initialCards = [
 
 /* получаем доступ к DOM элементам profile и popup */
 const profile = document.querySelector(".profile");
-const popup = document.querySelector(".popup");
+const popupBio = document.querySelector("#popup-bio");
+const popupPlace = document.querySelector("#popup-place");
 
 /* получаем доступ к кнопкам edit, close , add*/
 const editButton = profile.querySelector(".profile__edit-button");
-const addButton = profile.querySelector('.profile__add-button');
-const closeButton = popup.querySelector(".popup__close-button");
+const addButton = profile.querySelector(".profile__add-button");
+const closeButtonBio = popupBio.querySelector("#popup__close-button-bio");
+const closeButtonPlace = popupPlace.querySelector("#popup__close-button-place");
 
 /* получаем доступ к name и bio пользователя */
 const profileName = profile.querySelector(".profile__name");
 const profileBio = profile.querySelector(".profile__bio");
 
 /* получаем доступ к полям ввода */
-const popupForm = popup.querySelector(".popup__form");
-const formItemName = popup.querySelector(".popup__form-item_value_name");
-const formItemBio = popup.querySelector(".popup__form-item_value_bio");
+const popupForm = popupBio.querySelector(".popup__form");
+const formItemName = popupBio.querySelector(".popup__form-item_value_name");
+const formItemBio = popupBio.querySelector(".popup__form-item_value_bio");
+const popupFormPlace = popupPlace.querySelector(".popup__form-place");
+const formItemPlace = popupPlace.querySelector(".popup__form-item_value_place");
+const formItemLink = popupPlace.querySelector(".popup__form-item_value_link");
 
 /* получаем доступ к секции photo-grid */
 const photoGrid = document.querySelector(".photo-grid");
@@ -50,14 +55,23 @@ const photoGrid = document.querySelector(".photo-grid");
 /* получаем доступ к шаблону карточек */
 const cardTemplate = document.querySelector(".card-template").content;
 
-/* функция открытия и закрытия попапа */
+/* функция открытия и закрытия попапа профиля*/
 function togglePopup() {
-  if (popup.classList.contains("popup_opened") === false) {
-    popup.classList.toggle("popup_opened");
+  if (popupBio.classList.contains("popup_opened") === false) {
+    popupBio.classList.toggle("popup_opened");
     formItemName.value = profileName.textContent;
     formItemBio.value = profileBio.textContent;
   } else {
-    popup.classList.toggle("popup_opened");
+    popupBio.classList.toggle("popup_opened");
+  }
+}
+
+/* функция открытия и закрытия попапа добавления карточки*/
+function togglePopupPlace() {
+  if (popupPlace.classList.contains("popup_opened") === false) {
+    popupPlace.classList.toggle("popup_opened");
+  } else {
+    popupPlace.classList.toggle("popup_opened");
   }
 }
 
@@ -86,7 +100,7 @@ function renderItem(item) {
   photoGrid.append(cardItem);
 }
 
-/* функция отправки формы */
+/* функция отправки формы профиля */
 function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = formItemName.value;
@@ -94,6 +108,15 @@ function formSubmitHandler(evt) {
 
   togglePopup();
 }
+
+/* function formSubmitHandler(evt) {
+  evt.preventDefault();
+  
+  profileName.textContent = formItemName.value;
+  profileBio.textContent = formItemBio.value;
+
+  togglePopup();
+} */
 
 /* функция удаления карточки */
 function deleteItem(item) {
@@ -105,5 +128,7 @@ initialCards.forEach(renderItem);
 
 /* добавляем обработчики событий */
 editButton.addEventListener("click", togglePopup);
-closeButton.addEventListener("click", togglePopup);
+addButton.addEventListener("click", togglePopupPlace);
+closeButtonBio.addEventListener("click", togglePopup);
+closeButtonPlace.addEventListener("click", togglePopupPlace);
 popupForm.addEventListener("submit", formSubmitHandler);
