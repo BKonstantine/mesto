@@ -37,11 +37,15 @@ const editButton = profile.querySelector(".profile__edit-button");
 const addButton = profile.querySelector(".profile__add-button");
 const closeButtonBio = popupBio.querySelector("#popup__close-button-bio");
 const closeButtonPlace = popupPlace.querySelector("#popup__close-button-place");
-const closeButtonImage = popupImage.querySelector('#popup__close-button-image');
+const closeButtonImage = popupImage.querySelector("#popup__close-button-image");
 
 /* получаем доступ к name и bio пользователя */
 const profileName = profile.querySelector(".profile__name");
 const profileBio = profile.querySelector(".profile__bio");
+
+/* получаем доступ к карточке и ее названию в попапе*/
+const popupImagePlace = popupImage.querySelector(".popup__image-place");
+const popupImageTitle = popupImage.querySelector(".popup__image-title");
 
 /* получаем доступ к полям ввода */
 const popupForm = popupBio.querySelector(".popup__form");
@@ -78,23 +82,23 @@ function togglePopupPlace() {
 }
 
 /* функция добавления и закрытия попапа для изображений */
-function togglePopupImage() {
+function togglePopupImage(evt) {
   if (popupImage.classList.contains("popup_opened") === false) {
     popupImage.classList.toggle("popup_opened");
-    popupImage.querySelector('popup__image-place').src = (e) => e.target.style.backgroundImage;
-    popupImage.querySelector('popup__image-title').innerText = (e) => e.target.textContent;
+    console.log(evt.target);
+    popupImagePlace.src = evt.target.style.backgroundImage;
   } else {
     popupImage.classList.toggle("popup_opened");
   }
-} // необзодимо доработать
+}
 
 /* функция добавления карточки */
 function renderItem(item) {
   /* клонируем содержимое шаблона */
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
-
   /* наполняем содержимым */
-  cardItem.querySelector(".card__title").innerText = item.name; //попробовать заменить на textContent и отправить скрипт
+  cardItem.querySelector(".card__title").innerText = item.name;
+
   cardItem.querySelector(
     ".card__image"
   ).style.backgroundImage = `url(${item.link})`;
@@ -109,6 +113,10 @@ function renderItem(item) {
     .addEventListener("click", (e) =>
       e.target.classList.toggle("card__like_active")
     );
+
+  cardItem
+    .querySelector(".card__image")
+    .addEventListener("click", togglePopupImage);
 
   /* вставляем карточку на страницу */
   photoGrid.prepend(cardItem);
@@ -153,5 +161,6 @@ editButton.addEventListener("click", togglePopup);
 addButton.addEventListener("click", togglePopupPlace);
 closeButtonBio.addEventListener("click", togglePopup);
 closeButtonPlace.addEventListener("click", togglePopupPlace);
+closeButtonImage.addEventListener("click", togglePopupImage);
 popupForm.addEventListener("submit", formSubmitHandler);
 popupFormPlace.addEventListener("submit", formSubmitHandlerPlace);
