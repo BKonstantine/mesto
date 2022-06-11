@@ -75,6 +75,7 @@ function togglePopupPlace() {
   }
 }
 
+/* функция добавления карточки */
 function renderItem(item) {
   /* клонируем содержимое шаблона */
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
@@ -97,7 +98,7 @@ function renderItem(item) {
     );
 
   /* вставляем карточку на страницу */
-  photoGrid.append(cardItem);
+  photoGrid.prepend(cardItem);
 }
 
 /* функция отправки формы профиля */
@@ -109,14 +110,22 @@ function formSubmitHandler(evt) {
   togglePopup();
 }
 
-/* function formSubmitHandler(evt) {
+/* функция отправки формы карточки */
+function formSubmitHandlerPlace(evt) {
   evt.preventDefault();
-  
-  profileName.textContent = formItemName.value;
-  profileBio.textContent = formItemBio.value;
+  const place = {
+    name: "",
+    link: "",
+  };
 
-  togglePopup();
-} */
+  place.name = formItemPlace.value;
+  place.link = formItemLink.value;
+  renderItem(place);
+  togglePopupPlace();
+
+  formItemPlace.value = "";
+  formItemLink.value = "";
+}
 
 /* функция удаления карточки */
 function deleteItem(item) {
@@ -132,3 +141,4 @@ addButton.addEventListener("click", togglePopupPlace);
 closeButtonBio.addEventListener("click", togglePopup);
 closeButtonPlace.addEventListener("click", togglePopupPlace);
 popupForm.addEventListener("submit", formSubmitHandler);
+popupFormPlace.addEventListener("submit", formSubmitHandlerPlace);
