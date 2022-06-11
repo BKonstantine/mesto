@@ -30,13 +30,14 @@ const initialCards = [
 const profile = document.querySelector(".profile");
 const popupBio = document.querySelector("#popup-bio");
 const popupPlace = document.querySelector("#popup-place");
-const popupImage = document.querySelector("popup-image");
+const popupImage = document.querySelector("#popup-image");
 
 /* получаем доступ к кнопкам edit, close , add*/
 const editButton = profile.querySelector(".profile__edit-button");
 const addButton = profile.querySelector(".profile__add-button");
 const closeButtonBio = popupBio.querySelector("#popup__close-button-bio");
 const closeButtonPlace = popupPlace.querySelector("#popup__close-button-place");
+const closeButtonImage = popupImage.querySelector('#popup__close-button-image');
 
 /* получаем доступ к name и bio пользователя */
 const profileName = profile.querySelector(".profile__name");
@@ -75,6 +76,17 @@ function togglePopupPlace() {
     popupPlace.classList.toggle("popup_opened");
   }
 }
+
+/* функция добавления и закрытия попапа для изображений */
+function togglePopupImage() {
+  if (popupImage.classList.contains("popup_opened") === false) {
+    popupImage.classList.toggle("popup_opened");
+    popupImage.querySelector('popup__image-place').src = (e) => e.target.style.backgroundImage;
+    popupImage.querySelector('popup__image-title').innerText = (e) => e.target.textContent;
+  } else {
+    popupImage.classList.toggle("popup_opened");
+  }
+} // необзодимо доработать
 
 /* функция добавления карточки */
 function renderItem(item) {
