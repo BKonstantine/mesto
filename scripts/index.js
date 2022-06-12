@@ -121,8 +121,7 @@ function createCard(item) {
 
 /* функция отрисовки карточки */
 function renderCard() {
-  const cardList = initialCards.map((item) => {
-    console.log(createCard(item));
+  const cardList = initialCards.map((item) => {    
     return createCard(item);
   });
   photoGrid.append(...cardList);
