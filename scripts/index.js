@@ -61,49 +61,34 @@ const photoGrid = document.querySelector(".photo-grid");
 /* получаем доступ к шаблону карточек */
 const cardTemplate = document.querySelector(".card-template").content;
 
-/* функция открытия попапа */
+/* функция открытия попапа (универсальная)*/
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  console.log('open');
 }
 
-/* функция закрытия попапа */
+/* функция закрытия попапа (универсальная)*/
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  console.log('close');
 }
 
-/* функция открытия и закрытия попапа профиля*/
-function togglePopup() {
-  if (popupBio.classList.contains("popup_opened") === false) {
-    popupBio.classList.toggle("popup_opened");
+/* функция открытия попапа профиля*/
+function openProfileEdit() {  
+    openPopup(popupBio);
     formItemName.value = profileName.textContent;
-    formItemBio.value = profileBio.textContent;
-  } else {
-    popupBio.classList.toggle("popup_opened");
-  }
-}
-
-/* функция открытия и закрытия попапа добавления карточки*/
-function togglePopupPlace() {
-  if (popupPlace.classList.contains("popup_opened") === false) {
-    popupPlace.classList.toggle("popup_opened");
-  } else {
-    popupPlace.classList.toggle("popup_opened");
-  }
+    formItemBio.value = profileBio.textContent;  
 }
 
 /* функция добавления и закрытия попапа для изображений */
-function togglePopupImage(evt) {
-  if (popupImage.classList.contains("popup_opened") === false) {
-    popupImage.classList.toggle("popup_opened");
+function togglePopupImage(evt) {  
+    openPopup(popupImage);
     popupImagePlace.src = evt.target.style.backgroundImage
       .slice(4, -1)
       .replace(/(url\(|\)|")/g, "");
     popupImageTitle.innerText =
       evt.target.parentNode.querySelector(".card__title").innerText;
-    popupImagePlace.alt = popupImageTitle.innerText;
-  } else {
-    popupImage.classList.toggle("popup_opened");
-  }
+    popupImagePlace.alt = popupImageTitle.innerText;  
 }
 
 /* функция добавления карточки */
@@ -142,7 +127,7 @@ function formSubmitHandler(evt) {
   profileName.textContent = formItemName.value;
   profileBio.textContent = formItemBio.value;
 
-  togglePopup();
+  closePopup(popupBio);
 }
 
 /* функция отправки формы карточки */
@@ -156,10 +141,9 @@ function formSubmitHandlerPlace(evt) {
   place.name = formItemPlace.value;
   place.link = formItemLink.value;
   renderItem(place);
-  togglePopupPlace();
+  closePopup(popupPlace);
 
-  formItemPlace.value = "";
-  formItemLink.value = "";
+  popupFormPlace.reset();  
 }
 
 /* функция удаления карточки */
@@ -171,10 +155,10 @@ function deleteItem(item) {
 initialCards.forEach(renderItem);
 
 /* добавляем обработчики событий */
-editButton.addEventListener("click", togglePopup);
-addButton.addEventListener("click", togglePopupPlace);
-closeButtonBio.addEventListener("click", togglePopup);
-closeButtonPlace.addEventListener("click", togglePopupPlace);
-closeButtonImage.addEventListener("click", togglePopupImage);
+editButton.addEventListener("click", openProfileEdit);
+addButton.addEventListener("click", () => openPopup(popupPlace));
+closeButtonBio.addEventListener("click", () => closePopup(popupBio));
+closeButtonPlace.addEventListener("click", () => closePopup(popupPlace));
+closeButtonImage.addEventListener("click", () => closePopup(popupImage));
 popupForm.addEventListener("submit", formSubmitHandler);
 popupFormPlace.addEventListener("submit", formSubmitHandlerPlace);
