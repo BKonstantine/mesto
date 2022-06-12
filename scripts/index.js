@@ -64,31 +64,31 @@ const cardTemplate = document.querySelector(".card-template").content;
 /* функция открытия попапа (универсальная)*/
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  console.log('open');
+  console.log("open");
 }
 
 /* функция закрытия попапа (универсальная)*/
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  console.log('close');
+  console.log("close");
 }
 
 /* функция открытия попапа профиля*/
-function openProfileEdit() {  
-    openPopup(popupBio);
-    formItemName.value = profileName.textContent;
-    formItemBio.value = profileBio.textContent;  
+function openProfileEdit() {
+  openPopup(popupBio);
+  formItemName.value = profileName.textContent;
+  formItemBio.value = profileBio.textContent;
 }
 
 /* функция добавления и закрытия попапа для изображений */
-function togglePopupImage(evt) {  
-    openPopup(popupImage);
-    popupImagePlace.src = evt.target.style.backgroundImage
-      .slice(4, -1)
-      .replace(/(url\(|\)|")/g, "");
-    popupImageTitle.innerText =
-      evt.target.parentNode.querySelector(".card__title").innerText;
-    popupImagePlace.alt = popupImageTitle.innerText;  
+function togglePopupImage(evt) {
+  openPopup(popupImage);
+  popupImagePlace.src = evt.target.style.backgroundImage
+    .slice(4, -1)
+    .replace(/(url\(|\)|")/g, "");
+  popupImageTitle.innerText =
+    evt.target.parentNode.querySelector(".card__title").innerText;
+  popupImagePlace.alt = popupImageTitle.innerText;
 }
 
 /* функция добавления карточки */
@@ -121,6 +121,13 @@ function renderItem(item) {
   photoGrid.prepend(cardItem);
 }
 
+
+
+/* функция удаления карточки */
+function deleteItem(item) {
+  item.remove();
+}
+
 /* функция отправки формы профиля */
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -143,12 +150,7 @@ function handleImageFormSubmit(evt) {
   renderItem(place);
   closePopup(popupPlace);
 
-  popupFormPlace.reset();  
-}
-
-/* функция удаления карточки */
-function deleteItem(item) {
-  item.remove();
+  popupFormPlace.reset();
 }
 
 /* вставить стартовый нобор карточек */
