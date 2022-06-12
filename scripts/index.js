@@ -64,13 +64,11 @@ const cardTemplate = document.querySelector(".card-template").content;
 /* функция открытия попапа (универсальная)*/
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  console.log("open");
 }
 
 /* функция закрытия попапа (универсальная)*/
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  console.log("close");
 }
 
 /* функция открытия попапа профиля*/
@@ -91,10 +89,11 @@ function togglePopupImage(evt) {
   popupImagePlace.alt = popupImageTitle.innerText;
 }
 
-/* функция добавления карточки */
-function renderItem(item) {
+/* функция создания карточки */
+function createCard(item) {
   /* клонируем содержимое шаблона */
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
+
   /* наполняем содержимым */
   cardItem.querySelector(".card__title").innerText = item.name;
 
@@ -117,11 +116,17 @@ function renderItem(item) {
     .querySelector(".card__image")
     .addEventListener("click", togglePopupImage);
 
-  /* вставляем карточку на страницу */
-  photoGrid.prepend(cardItem);
+  return cardItem;
 }
 
-
+/* функция отрисовки карточки */
+function renderCard() {
+  const cardList = initialCards.map((item) => {
+    console.log(createCard(item));
+    return createCard(item);
+  });
+  photoGrid.append(...cardList);
+}
 
 /* функция удаления карточки */
 function deleteItem(item) {
@@ -140,21 +145,17 @@ function handleProfileFormSubmit(evt) {
 /* функция отправки формы карточки */
 function handleImageFormSubmit(evt) {
   evt.preventDefault();
-  const place = {
-    name: "",
-    link: "",
-  };
-
-  place.name = formItemPlace.value;
-  place.link = formItemLink.value;
-  renderItem(place);
+  const place = createCard({
+    name: formItemPlace.value,
+    link: formItemLink.value,
+  });
+  photoGrid.prepend(place);  
   closePopup(popupPlace);
-
   popupFormPlace.reset();
 }
 
 /* вставить стартовый нобор карточек */
-initialCards.forEach(renderItem);
+renderCard();
 
 /* добавляем обработчики событий */
 editButton.addEventListener("click", openProfileEdit);
