@@ -122,7 +122,7 @@ function renderItem(item) {
 }
 
 /* функция отправки формы профиля */
-function formSubmitHandler(evt) {
+function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = formItemName.value;
   profileBio.textContent = formItemBio.value;
@@ -131,7 +131,7 @@ function formSubmitHandler(evt) {
 }
 
 /* функция отправки формы карточки */
-function formSubmitHandlerPlace(evt) {
+function handleImageFormSubmit(evt) {
   evt.preventDefault();
   const place = {
     name: "",
@@ -160,5 +160,5 @@ addButton.addEventListener("click", () => openPopup(popupPlace));
 closeButtonBio.addEventListener("click", () => closePopup(popupBio));
 closeButtonPlace.addEventListener("click", () => closePopup(popupPlace));
 closeButtonImage.addEventListener("click", () => closePopup(popupImage));
-popupForm.addEventListener("submit", formSubmitHandler);
-popupFormPlace.addEventListener("submit", formSubmitHandlerPlace);
+popupForm.addEventListener("submit", handleProfileFormSubmit);
+popupFormPlace.addEventListener("submit", handleImageFormSubmit);
