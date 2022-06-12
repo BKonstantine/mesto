@@ -61,6 +61,16 @@ const photoGrid = document.querySelector(".photo-grid");
 /* получаем доступ к шаблону карточек */
 const cardTemplate = document.querySelector(".card-template").content;
 
+/* функция открытия попапа */
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
+}
+
+/* функция закрытия попапа */
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
+}
+
 /* функция открытия и закрытия попапа профиля*/
 function togglePopup() {
   if (popupBio.classList.contains("popup_opened") === false) {
@@ -84,9 +94,12 @@ function togglePopupPlace() {
 /* функция добавления и закрытия попапа для изображений */
 function togglePopupImage(evt) {
   if (popupImage.classList.contains("popup_opened") === false) {
-    popupImage.classList.toggle("popup_opened");    
-    popupImagePlace.src = evt.target.style.backgroundImage.slice(4, -1).replace(/(url\(|\)|")/g, '');
-    popupImageTitle.innerText = evt.target.parentNode.querySelector('.card__title').innerText;
+    popupImage.classList.toggle("popup_opened");
+    popupImagePlace.src = evt.target.style.backgroundImage
+      .slice(4, -1)
+      .replace(/(url\(|\)|")/g, "");
+    popupImageTitle.innerText =
+      evt.target.parentNode.querySelector(".card__title").innerText;
     popupImagePlace.alt = popupImageTitle.innerText;
   } else {
     popupImage.classList.toggle("popup_opened");
