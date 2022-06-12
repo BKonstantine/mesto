@@ -86,6 +86,7 @@ function togglePopupImage(evt) {
   if (popupImage.classList.contains("popup_opened") === false) {
     popupImage.classList.toggle("popup_opened");    
     popupImagePlace.src = evt.target.style.backgroundImage.slice(4, -1).replace(/(url\(|\)|")/g, '');
+    popupImageTitle.innerText = evt.target.parentNode.querySelector('.card__title').innerText;
   } else {
     popupImage.classList.toggle("popup_opened");
   }
