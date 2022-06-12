@@ -84,9 +84,8 @@ function togglePopupPlace() {
 /* функция добавления и закрытия попапа для изображений */
 function togglePopupImage(evt) {
   if (popupImage.classList.contains("popup_opened") === false) {
-    popupImage.classList.toggle("popup_opened");
-    console.log(evt.target);
-    popupImagePlace.src = evt.target.style.backgroundImage;
+    popupImage.classList.toggle("popup_opened");    
+    popupImagePlace.src = evt.target.style.backgroundImage.slice(4, -1).replace(/(url\(|\)|")/g, '');
   } else {
     popupImage.classList.toggle("popup_opened");
   }
