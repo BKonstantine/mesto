@@ -36,11 +36,19 @@
             type="text"
             name="name"
             class="popup__form-item popup__form-item_value_name"
+            placeholder=" Имя"
+            minlength="2"
+            maxlength="40"
+            required
           />
           <input
             type="text"
             name="bio"
             class="popup__form-item popup__form-item_value_bio"
+            placeholder=" О себе"
+            minlength="2"
+            maxlength="40"
+            required
           />
           <button class="popup__save-button" type="submit">Сохранить</button>
         </form>
@@ -60,12 +68,16 @@
             name="name"
             class="popup__form-item popup__form-item_value_place"
             placeholder=" Название"
+            minlength="2"
+            maxlength="30"
+            required
           />
           <input
-            type="text"
+            type="url"
             name="bio"
             class="popup__form-item popup__form-item_value_link"
             placeholder=" Ссылка на картинку"
+            required
           />
           <button class="popup__make-button" type="submit">Создать</button>
         </form>
