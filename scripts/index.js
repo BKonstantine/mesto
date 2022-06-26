@@ -49,11 +49,11 @@ const popupImageTitle = popupImage.querySelector(".popup__image-title");
 
 /* получаем доступ к полям ввода */
 const popupFormBio = popupBio.querySelector(".popup__form-bio");
-const formItemName = popupBio.querySelector(".popup__form-item_value_name");
-const formItemBio = popupBio.querySelector(".popup__form-item_value_bio");
+const formItemName = popupBio.querySelector(".popup__input_value_name");
+const formItemBio = popupBio.querySelector(".popup__input_value_bio");
 const popupFormPlace = popupPlace.querySelector(".popup__form-place");
-const formItemPlace = popupPlace.querySelector(".popup__form-item_value_place");
-const formItemLink = popupPlace.querySelector(".popup__form-item_value_link");
+const formItemPlace = popupPlace.querySelector(".popup__input_value_place");
+const formItemLink = popupPlace.querySelector(".popup__input_value_link");
 
 /* получаем доступ к секции photo-grid */
 const photoGrid = document.querySelector(".photo-grid");
