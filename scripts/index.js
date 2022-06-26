@@ -48,7 +48,7 @@ const popupImagePlace = popupImage.querySelector(".popup__image-place");
 const popupImageTitle = popupImage.querySelector(".popup__image-title");
 
 /* получаем доступ к полям ввода */
-const popupForm = popupBio.querySelector(".popup__form");
+const popupFormBio = popupBio.querySelector(".popup__form-bio");
 const formItemName = popupBio.querySelector(".popup__form-item_value_name");
 const formItemBio = popupBio.querySelector(".popup__form-item_value_bio");
 const popupFormPlace = popupPlace.querySelector(".popup__form-place");
@@ -162,5 +162,5 @@ addButton.addEventListener("click", () => openPopup(popupPlace));
 closeButtonBio.addEventListener("click", () => closePopup(popupBio));
 closeButtonPlace.addEventListener("click", () => closePopup(popupPlace));
 closeButtonImage.addEventListener("click", () => closePopup(popupImage));
-popupForm.addEventListener("submit", handleProfileFormSubmit);
+popupFormBio.addEventListener("submit", handleProfileFormSubmit);
 popupFormPlace.addEventListener("submit", handleImageFormSubmit);
