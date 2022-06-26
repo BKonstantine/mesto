@@ -1,4 +1,4 @@
-.popup__form-item {
+.popup__input {
   width: 358px;
   margin: 0;
   padding: 0 0 10px 0;
@@ -10,7 +10,7 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.popup__form-item::placeholder {
+.popup__input::placeholder {
   font-family: "Inter", "Arial", sans-serif;
   font-weight: 400;
   font-size: 14px;
