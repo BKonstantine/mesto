@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .popup__form-item {
+  .popup__input {
     width: 238px;
   }
 }
