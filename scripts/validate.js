@@ -7,9 +7,6 @@ const validationSetting = {
   errorClass: "popup__input-error_active",
 };
 
-//const formElement = document.querySelector(validationSetting.formSelector);
-//const formInput = formElement.querySelector(validationSetting.inputSelector);
-
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(validationSetting.inputErrorClass);
