@@ -65,12 +65,21 @@ const cardTemplate = document.querySelector(".card-template").content;
 /* функция открытия попапа (универсальная)*/
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown', closePopupOnEsc);
 }
 
 /* функция закрытия попапа (универсальная)*/
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', closePopupOnEsc);
 }
+
+function closePopupOnEsc(evt) {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
+  }
+};
 
 /* функция открытия попапа профиля*/
 function openProfileEdit() {
@@ -168,7 +177,7 @@ popups.forEach((popup) => {
     if (evt.target.classList.contains("popup__close-button")) {
       closePopup(popup);
     }
-    if (evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains("popup_opened")) {
       closePopup(popup);
     }
   });
