@@ -31,6 +31,7 @@ const profile = document.querySelector(".profile");
 const popupBio = document.querySelector("#popup-bio");
 const popupPlace = document.querySelector("#popup-place");
 const popupImage = document.querySelector("#popup-image");
+const popups = document.querySelectorAll(".popup");
 
 /* получаем доступ к кнопкам edit, close , add*/
 const editButton = profile.querySelector(".profile__edit-button");
@@ -121,7 +122,7 @@ function createCard(item) {
 
 /* функция отрисовки карточки */
 function renderCard() {
-  const cardList = initialCards.map((item) => {    
+  const cardList = initialCards.map((item) => {
     return createCard(item);
   });
   photoGrid.append(...cardList);
@@ -148,7 +149,7 @@ function handleImageFormSubmit(evt) {
     name: formItemPlace.value,
     link: formItemLink.value,
   });
-  photoGrid.prepend(place);  
+  photoGrid.prepend(place);
   closePopup(popupPlace);
   popupFormPlace.reset();
 }
@@ -159,8 +160,16 @@ renderCard();
 /* добавляем обработчики событий */
 editButton.addEventListener("click", openProfileEdit);
 addButton.addEventListener("click", () => openPopup(popupPlace));
-closeButtonBio.addEventListener("click", () => closePopup(popupBio));
-closeButtonPlace.addEventListener("click", () => closePopup(popupPlace));
-closeButtonImage.addEventListener("click", () => closePopup(popupImage));
 popupFormBio.addEventListener("submit", handleProfileFormSubmit);
 popupFormPlace.addEventListener("submit", handleImageFormSubmit);
+
+popups.forEach((popup) => {
+  popup.addEventListener("click", (evt) => {
+    if (evt.target.classList.contains("popup__close-button")) {
+      closePopup(popup);
+    }
+    if (evt.target.classList.contains('popup_opened')) {
+      closePopup(popup);
+    }
+  });
+});
