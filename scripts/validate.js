@@ -1,3 +1,4 @@
+/* объект для настройки валидации */
 const validationSetting = {
   formSelector: ".popup__form",
   inputSelector: ".popup__input",
@@ -7,6 +8,7 @@ const validationSetting = {
   errorClass: "popup__input-error_active",
 };
 
+/* функция отображения ошибки валидации */
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(validationSetting.inputErrorClass);
@@ -14,6 +16,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   errorElement.classList.add(validationSetting.errorClass);
 };
 
+/* функция скрытия ошибки валидации */
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(validationSetting.inputErrorClass);
@@ -21,6 +24,7 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = "";
 };
 
+/* функция проверки формы на валидность */
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
@@ -29,12 +33,14 @@ const isValid = (formElement, inputElement) => {
   }
 };
 
+/* функция проверки нескольких форм на валидность  */
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
 };
 
+/* функция блокировки кнопок 'сохранить' и 'отправить' */
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(validationSetting.inactiveButtonClass);
@@ -45,6 +51,7 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
+/* функция установки слушателей на форму */
 const setEventListeners = (formElement) => {
   const inputList = Array.from(
     formElement.querySelectorAll(validationSetting.inputSelector)
@@ -63,6 +70,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
+/* функция установки слушателей события на все формы */
 const enableValidation = () => {
   const formList = Array.from(
     document.querySelectorAll(validationSetting.formSelector)
