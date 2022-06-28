@@ -21,7 +21,7 @@ const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(validationSetting.inputErrorClass);
   errorElement.classList.remove(validationSetting.errorClass);
-  errorElement.textContent = "";
+  errorElement.textContent = "";  
 };
 
 /* функция проверки формы на валидность */
@@ -38,6 +38,15 @@ const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
     return !inputElement.validity.valid;
   });
+};
+
+/* сброс ошибок валидации */
+const resetValid = (validationSetting, popup) => {
+  const formElement = popup.querySelector(validationSetting.formSelector);
+  const inputList = Array.from(formElement.querySelectorAll(validationSetting.inputSelector));
+  const buttonElement = formElement.querySelector(validationSetting.submitButtonSelector);
+  inputList.forEach((inputElement) => hideInputError(formElement, inputElement));
+  toggleButtonState(inputList, buttonElement);
 };
 
 /* функция блокировки кнопок 'сохранить' и 'отправить' */

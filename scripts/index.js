@@ -82,10 +82,18 @@ function closePopupOnEsc(evt) {
 }
 
 /* функция открытия попапа профиля*/
-function openProfileEdit() {
+function openProfileEdit() {  
   openPopup(popupBio);
   formItemName.value = profileName.textContent;
-  formItemBio.value = profileBio.textContent;  
+  formItemBio.value = profileBio.textContent;
+  resetValid(validationSetting, popupBio);  
+}
+
+/* функция открытия попапа добавления карточки */
+function openAddCard() {
+  openPopup(popupPlace);
+  popupFormPlace.reset();
+  resetValid(validationSetting, popupPlace);
 }
 
 /* функция добавления и закрытия попапа для изображений */
@@ -168,7 +176,7 @@ renderCard();
 
 /* добавляем обработчики событий */
 editButton.addEventListener("click", openProfileEdit);
-addButton.addEventListener("click", () => openPopup(popupPlace));
+addButton.addEventListener("click", openAddCard);
 popupFormBio.addEventListener("submit", handleProfileFormSubmit);
 popupFormPlace.addEventListener("submit", handleImageFormSubmit);
 
