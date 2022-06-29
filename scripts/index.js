@@ -108,29 +108,21 @@ function togglePopupImage(evt) {
 function createCard(item) {
   /* клонируем содержимое шаблона */
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
-  
+  const cardItemTitle = cardItem.querySelector(".card__title");
+  const cardItemImage = cardItem.querySelector(".card__image");
+  const cardItemTrash = cardItem.querySelector(".card__trash");
+  const cardItemLike = cardItem.querySelector(".card__like");  
 
   /* наполняем содержимым */
-  cardItem.querySelector(".card__title").textContent = item.name;
-
-  cardItem.querySelector(
-    ".card__image"
-  ).style.backgroundImage = `url(${item.link})`;
+  cardItemTitle.textContent = item.name;
+  cardItemImage.style.backgroundImage = `url(${item.link})`;
 
   /* добавляем обработчики событий */
-  cardItem
-    .querySelector(".card__trash")
-    .addEventListener("click", () => deleteItem(cardItem));
-
-  cardItem
-    .querySelector(".card__like")
-    .addEventListener("click", (e) =>
-      e.target.classList.toggle("card__like_active")
-    );
-
-  cardItem
-    .querySelector(".card__image")
-    .addEventListener("click", togglePopupImage);
+  cardItemTrash.addEventListener("click", () => deleteItem(cardItem));
+  cardItemLike.addEventListener("click", (e) =>
+    e.target.classList.toggle("card__like_active")
+  );
+  cardItemImage.addEventListener("click", togglePopupImage);
 
   return cardItem;
 }
