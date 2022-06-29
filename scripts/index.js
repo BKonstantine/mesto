@@ -102,9 +102,9 @@ function togglePopupImage(evt) {
   popupImagePlace.src = evt.target.style.backgroundImage
     .slice(4, -1)
     .replace(/(url\(|\)|")/g, "");
-  popupImageTitle.innerText =
-    evt.target.parentNode.querySelector(".card__title").innerText;
-  popupImagePlace.alt = popupImageTitle.innerText;
+  popupImageTitle.textContent =
+    evt.target.parentNode.querySelector(".card__title").textContent;
+  popupImagePlace.alt = popupImageTitle.textContent;
 }
 
 /* функция создания карточки */
@@ -113,7 +113,7 @@ function createCard(item) {
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
 
   /* наполняем содержимым */
-  cardItem.querySelector(".card__title").innerText = item.name;
+  cardItem.querySelector(".card__title").textContent = item.name;
 
   cardItem.querySelector(
     ".card__image"
