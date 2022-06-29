@@ -86,14 +86,14 @@ function openProfileEdit() {
   openPopup(popupBio);
   formItemName.value = profileName.textContent;
   formItemBio.value = profileBio.textContent;
-  resetValid(validationSetting, popupBio);  
+  resetValid(validationResetSetting, popupBio);  
 }
 
 /* функция открытия попапа добавления карточки */
 function openAddCard() {
   openPopup(popupPlace);
   popupFormPlace.reset();
-  resetValid(validationSetting, popupPlace);
+  resetValid(validationResetSetting, popupPlace);
 }
 
 /* функция добавления и закрытия попапа для изображений */
