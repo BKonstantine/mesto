@@ -34,11 +34,8 @@ const popupImage = document.querySelector("#popup-image");
 const popups = document.querySelectorAll(".popup");
 
 /* получаем доступ к кнопкам edit, close , add*/
-const editButton = profile.querySelector(".profile__edit-button");
-const addButton = profile.querySelector(".profile__add-button");
-const closeButtonBio = popupBio.querySelector("#popup__close-button-bio");
-const closeButtonPlace = popupPlace.querySelector("#popup__close-button-place");
-const closeButtonImage = popupImage.querySelector("#popup__close-button-image");
+const buttonEdit = profile.querySelector(".profile__edit-button");
+const buttonAdd = profile.querySelector(".profile__add-button");
 
 /* получаем доступ к name и bio пользователя */
 const profileName = profile.querySelector(".profile__name");
@@ -82,11 +79,11 @@ function closePopupOnEsc(evt) {
 }
 
 /* функция открытия попапа профиля*/
-function openProfileEdit() {  
+function openProfileEdit() {
   openPopup(popupBio);
   formItemName.value = profileName.textContent;
   formItemBio.value = profileBio.textContent;
-  resetValid(validationResetSetting, popupBio);  
+  resetValid(validationResetSetting, popupBio);
 }
 
 /* функция открытия попапа добавления карточки */
@@ -111,6 +108,7 @@ function togglePopupImage(evt) {
 function createCard(item) {
   /* клонируем содержимое шаблона */
   const cardItem = cardTemplate.querySelector(".card").cloneNode(true);
+  
 
   /* наполняем содержимым */
   cardItem.querySelector(".card__title").textContent = item.name;
@@ -175,8 +173,8 @@ function handleImageFormSubmit(evt) {
 renderCard();
 
 /* добавляем обработчики событий */
-editButton.addEventListener("click", openProfileEdit);
-addButton.addEventListener("click", openAddCard);
+buttonEdit.addEventListener("click", openProfileEdit);
+buttonAdd.addEventListener("click", openAddCard);
 popupFormBio.addEventListener("submit", handleProfileFormSubmit);
 popupFormPlace.addEventListener("submit", handleImageFormSubmit);
 
