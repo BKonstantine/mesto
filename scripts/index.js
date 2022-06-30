@@ -1,3 +1,4 @@
+debugger;
 /* стартовый набор для блока card */
 const initialCards = [
   {
@@ -94,14 +95,12 @@ function openAddCard() {
 }
 
 /* функция добавления и закрытия попапа для изображений */
-function togglePopupImage(evt) {
+function togglePopupImage(link, title) {
+  popupImagePlace.src = link;
+  popupImageTitle.textContent = title;
+  popupImagePlace.alt = title;
+
   openPopup(popupImage);
-  popupImagePlace.src = evt.target.style.backgroundImage
-    .slice(4, -1)
-    .replace(/(url\(|\)|")/g, "");
-  popupImageTitle.textContent =
-    evt.target.parentNode.querySelector(".card__title").textContent;
-  popupImagePlace.alt = popupImageTitle.textContent;
 }
 
 /* функция создания карточки */
@@ -111,18 +110,21 @@ function createCard(item) {
   const cardItemTitle = cardItem.querySelector(".card__title");
   const cardItemImage = cardItem.querySelector(".card__image");
   const cardItemTrash = cardItem.querySelector(".card__trash");
-  const cardItemLike = cardItem.querySelector(".card__like");  
+  const cardItemLike = cardItem.querySelector(".card__like");
 
   /* наполняем содержимым */
   cardItemTitle.textContent = item.name;
-  cardItemImage.style.backgroundImage = `url(${item.link})`;
+  cardItemImage.src = item.link;
+  cardItemImage.alt = item.name;
 
   /* добавляем обработчики событий */
   cardItemTrash.addEventListener("click", () => deleteItem(cardItem));
   cardItemLike.addEventListener("click", (e) =>
     e.target.classList.toggle("card__like_active")
   );
-  cardItemImage.addEventListener("click", togglePopupImage);
+  cardItemImage.addEventListener("click", () =>
+    togglePopupImage(item.link, item.name)
+  );
 
   return cardItem;
 }
